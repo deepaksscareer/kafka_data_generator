@@ -3,8 +3,7 @@
 # Remove class files
 *.class
 target/
-out/s
-Main$.class
+out/
 
 # === SBT & Scala ===
 target/
