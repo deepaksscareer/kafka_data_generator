@@ -1,4 +1,6 @@
-import ulities.{ConfigLoader, ReadTopic}
+import ulities.ReadTopic
+import ulities.configuration.ConfigLoader
+
 object Main extends App{
   println("Performing main operation : New Versions")
 

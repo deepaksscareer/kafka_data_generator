@@ -1,4 +1,4 @@
-package ulities
+package ulities.configuration
 
 import com.typesafe.config.ConfigFactory
 import models.KafkaConf
@@ -17,10 +17,18 @@ object ConfigLoader {
 
     // Get the values
     val bootstrapServer = config.getString(s"$root_location.bootstrapServers")
-    val topic = config.getString(s"$root_location.topic")
+
     val retries = config.getInt(s"$root_location.retries")
+
+    // Consumer Group
     val consumerGroup = config.getString(s"$root_location.consumerGroup")
+
+    // Other params
     val autoOffsetReset = config.getString(s"$root_location.autoOffsetReset")
+    val acknowledgement = config.getString(s"$root_location.acknowledgement")
+
+    // Topic details
+    val writeTopic = config.getString(s"$root_location.writeTopic")
     val readTopic = config.getString(s"$root_location.readTopic")
 
     logger.info(
@@ -28,15 +36,21 @@ object ConfigLoader {
          | Printing kafka configurations
          |The kafka setup
          |bootstrap_server = $bootstrapServer
-         |topic = $topic
+         |writeTopic = $writeTopic
+         |readTopic: $readTopic
          |retries = $retries
          |consumerGroup = $consumerGroup
          |autoOffsetReset: $autoOffsetReset
-         |readTopic: $readTopic
+         |acknowledgement: $acknowledgement
          |""".stripMargin)
 
-    KafkaConf(bootstrapServers = bootstrapServer, topic = topic, retries = retries,
-      consumerGroup = consumerGroup, readTopic = readTopic, autoOffsetReset = autoOffsetReset)
+    KafkaConf(bootstrapServers = bootstrapServer,
+      retries = retries,
+      consumerGroup = consumerGroup,
+      autoOffsetReset = autoOffsetReset,
+      readTopic = readTopic,
+      writeTopic = writeTopic,
+      acknowledgement = acknowledgement)
   }
 
 }

@@ -1,39 +1,22 @@
 package ulities
 
-import org.slf4j.LoggerFactory
 import models.KafkaConf
-import org.apache.kafka.clients.consumer.KafkaConsumer
-import org.apache.kafka.common.serialization.StringDeserializer
-import ulities.ReadTopic.consumer
+import org.slf4j.LoggerFactory
+import ulities.configuration.ConfigLoader
+import ulities.kafka.KafkaCommon
+import kafka.KafkaConsumer
 
 import java.time.Duration
-import java.util.{Collections, Properties}
+import java.util.Collections
 import scala.collection.JavaConverters.iterableAsScalaIterableConverter
 
 object ReadTopic {
 
   private val logger = LoggerFactory.getLogger(this.getClass)
-
   logger.info("Kafka consumer started...")
 
   val config: KafkaConf = ConfigLoader.getConfig
-  val props: Properties = KafkaProperty.getProperty()
-
-  // Create Kafka Consumer
-  val consumer = new KafkaConsumer[String, String](props)
-
-  private def listTopic(): Unit = {
-
-    try {
-      consumer.listTopics() // triggers metadata fetch
-      logger.info("Kafka is reachable from consumer")
-    } catch {
-      case e: Exception =>
-        logger.info(s"Kafka Consumer failed to connect: ${e.getMessage}")
-        System.exit(1)
-    }
-
-  }
+  val consumer = KafkaConsumer.consumer
 
   private def getMessage(): Unit = {
 
@@ -55,7 +38,8 @@ object ReadTopic {
   }
 
   def processIncoming(): Unit = {
-    listTopic()
+    val kafkaCommon = KafkaCommon
+    kafkaCommon.listTopic()
     getMessage()
   }
 
