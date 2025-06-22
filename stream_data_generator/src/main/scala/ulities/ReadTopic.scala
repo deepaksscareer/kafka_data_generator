@@ -1,5 +1,6 @@
 package ulities
 
+import org.slf4j.LoggerFactory
 import models.KafkaConf
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -11,39 +12,43 @@ import scala.collection.JavaConverters.iterableAsScalaIterableConverter
 
 object ReadTopic {
 
+  private val logger = LoggerFactory.getLogger(this.getClass)
+
+  logger.info("Kafka consumer started...")
+
   val config: KafkaConf = ConfigLoader.getConfig
   val props: Properties = KafkaProperty.getProperty()
 
   // Create Kafka Consumer
   val consumer = new KafkaConsumer[String, String](props)
 
-  def listTopic(): Unit = {
+  private def listTopic(): Unit = {
 
     try {
       consumer.listTopics() // triggers metadata fetch
-      println("Kafka is reachable from consumer")
+      logger.info("Kafka is reachable from consumer")
     } catch {
       case e: Exception =>
-        println(s"Kafka Consumer failed to connect: ${e.getMessage}")
+        logger.info(s"Kafka Consumer failed to connect: ${e.getMessage}")
         System.exit(1)
     }
 
   }
 
-  def getMessage(): Unit = {
+  private def getMessage(): Unit = {
 
-    println(s"Config: $config")
+    logger.info(s"Config: $config")
 
     // Subscribe to topic
     consumer.subscribe(Collections.singletonList(config.readTopic))
 
-    println("Starting Kafka Consumer...")
+    logger.info("Starting Kafka Consumer...")
 
     // Poll loop
     while (true) {
       val records = consumer.poll(Duration.ofMillis(500))
       for (record <- records.asScala) {
-        println(s"Received: key=${record.key()}, value=${record.value()}, partition=${record.partition()}, offset=${record.offset()}")
+        logger.info(s"Received: key=${record.key()}, value=${record.value()}, partition=${record.partition()}, offset=${record.offset()}")
       }
     }
 

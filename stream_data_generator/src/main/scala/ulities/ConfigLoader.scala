@@ -2,8 +2,12 @@ package ulities
 
 import com.typesafe.config.ConfigFactory
 import models.KafkaConf
+import org.slf4j.LoggerFactory
 
 object ConfigLoader {
+
+  private val logger = LoggerFactory.getLogger(this.getClass)
+
   def getConfig: KafkaConf = {
 
     // Load application conf
@@ -19,7 +23,7 @@ object ConfigLoader {
     val autoOffsetReset = config.getString(s"$root_location.autoOffsetReset")
     val readTopic = config.getString(s"$root_location.readTopic")
 
-    println(
+    logger.info(
       s"""
          | Printing kafka configurations
          |The kafka setup
