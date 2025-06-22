@@ -3,7 +3,7 @@ package ulities
 import org.slf4j.LoggerFactory
 import models.KafkaConf
 import ulities.configuration.ConfigLoader
-import kafka.{KafkaCommon, KafkaProducer}
+import kafka.{KafkaCommon, KafkaProduce}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 import scala.util.Random
@@ -13,7 +13,7 @@ object WriteTopic {
   logger.info("Kafka consumer started...")
 
   val config: KafkaConf = ConfigLoader.getConfig
-  val producer: KafkaProducer[String, String] = KafkaProducer.producer
+  val producer: KafkaProducer[String, String] = KafkaProduce.producer
 
   private def pushMessage(): Unit = {
 
@@ -26,7 +26,7 @@ object WriteTopic {
 
     for (name <- 1 to 5) {
       val key = users(random.nextInt(users.length)) // random user
-      val value = s"order-${1000 + random.nextInt(9000)} for user : ${users(name)}" // random order number
+      val value = s"order-${1000 + random.nextInt(9000)} for user : ${users(name - 1)}" // random order number
 
       val record = new ProducerRecord[String, String](config.writeTopic, key, value)
 

@@ -61,3 +61,18 @@ echo "Deleting topics in kafka"
 ./kafka-topics.sh --delete --topic sales-orders --bootstrap-server ${bootstrap_server}
 
 ```
+
+### Viewing topic messages in Kafka
+```bash
+
+code_dir="/opt/kafka/bin/"
+bootstrap_server="localhost:9092"
+
+cd ${code_dir}
+
+echo "Deleting topics in kafka"
+
+# Enter message is key value pairs
+./kafka-console-consumer.sh --topic sales-order --bootstrap-server ${bootstrap_server} --from-beginning
+
+```

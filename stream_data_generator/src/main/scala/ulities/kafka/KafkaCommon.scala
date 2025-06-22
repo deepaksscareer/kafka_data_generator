@@ -9,7 +9,7 @@ object KafkaCommon {
 
   private val logger = LoggerFactory.getLogger(this.getClass)
 
-  val consumer: KafkaConsumer[String, String] = KafkaConsumer.consumer
+  val consumer: KafkaConsumer[String, String] = KafkaConsume.consumer
 
   def listTopic(): Unit = {
 

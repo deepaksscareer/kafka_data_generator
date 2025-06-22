@@ -4,7 +4,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer
 
 import java.util.Properties
 
-object KafkaConsumer {
+object KafkaConsume {
 
   private val props: Properties = KafkaProperty.getReadProperty()
 

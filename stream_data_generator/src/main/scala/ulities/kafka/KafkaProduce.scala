@@ -4,7 +4,7 @@ import org.apache.kafka.clients.producer.KafkaProducer
 
 import java.util.Properties
 
-object KafkaProducer {
+object KafkaProduce {
 
   private val props: Properties = KafkaProperty.getWriteProperty()
 
