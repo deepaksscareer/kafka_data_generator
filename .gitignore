@@ -15,7 +15,9 @@ target/
 /bin/
 /out/
 
-stream_data_generator\target\
+stream_data_generator/target/
+stream_data_generator/project/
+
 sbt*
 .idea/
 
