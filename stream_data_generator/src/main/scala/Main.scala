@@ -1,6 +1,8 @@
-import ulities.ConfigLoader
+import ulities.{ConfigLoader, ReadTopic}
 object Main extends App{
   println("Performing main operation : New Versions")
-  val configLoad = ConfigLoader.getConfig
+
+  private val readOrder = ReadTopic
+  readOrder.processIncoming()
 
 }

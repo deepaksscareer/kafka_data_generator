@@ -1,10 +1,10 @@
 package ulities
 
 import com.typesafe.config.ConfigFactory
-import models.KafkaConfig
+import models.KafkaConf
 
 object ConfigLoader {
-  def getConfig: KafkaConfig = {
+  def getConfig: KafkaConf = {
 
     // Load application conf
     val config = ConfigFactory.load()
@@ -21,6 +21,7 @@ object ConfigLoader {
 
     println(
       s"""
+         | Printing kafka configurations
          |The kafka setup
          |bootstrap_server = $bootstrapServer
          |topic = $topic
@@ -30,7 +31,7 @@ object ConfigLoader {
          |readTopic: $readTopic
          |""".stripMargin)
 
-    KafkaConfig(bootstrapServers = bootstrapServer, topic = topic, retries = retries,
+    KafkaConf(bootstrapServers = bootstrapServer, topic = topic, retries = retries,
       consumerGroup = consumerGroup, readTopic = readTopic, autoOffsetReset = autoOffsetReset)
   }
 
