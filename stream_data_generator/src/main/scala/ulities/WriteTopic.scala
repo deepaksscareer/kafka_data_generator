@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory
 import models.KafkaConf
 import ulities.configuration.ConfigLoader
 import kafka.{KafkaCommon, KafkaProducer}
-import org.apache.kafka.clients.producer.ProducerRecord
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
 import scala.util.Random
 object WriteTopic {
@@ -13,7 +13,7 @@ object WriteTopic {
   logger.info("Kafka consumer started...")
 
   val config: KafkaConf = ConfigLoader.getConfig
-  val producer = KafkaProducer.producer
+  val producer: KafkaProducer[String, String] = KafkaProducer.producer
 
   private def pushMessage(): Unit = {
 

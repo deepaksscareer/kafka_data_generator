@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory
 import ulities.configuration.ConfigLoader
 import ulities.kafka.KafkaCommon
 import kafka.KafkaConsumer
+import org.apache.kafka.clients.consumer.KafkaConsumer
 
 import java.time.Duration
 import java.util.Collections
@@ -16,7 +17,7 @@ object ReadTopic {
   logger.info("Kafka consumer started...")
 
   val config: KafkaConf = ConfigLoader.getConfig
-  val consumer = KafkaConsumer.consumer
+  val consumer: KafkaConsumer[String, String] = KafkaConsumer.consumer
 
   private def getMessage(): Unit = {
 
