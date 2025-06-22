@@ -1,0 +1,10 @@
+[debug] > Exec(;project ; startServer, None, None)
+[debug] > Exec(project, None, None)
+[info] root (in build file:/C:/Programming/python_project/public_repo/kafka_data_generator/stream_data_generator/)
+[debug] > Exec(startServer, None, None)
+[info] sbt server started at local:sbt-server-621612ae516499bcd599
+[debug] Writing bsp connection file
+[info] started sbt server
+[debug] > Exec(idea-shell, None, None)
+[debug] > Exec(, None, None)
+[debug] > Exec(idea-shell, None, None)

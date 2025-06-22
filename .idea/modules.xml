@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/kafka_data_generator.iml" filepath="$PROJECT_DIR$/.idea/kafka_data_generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/stream_data_generator.iml" filepath="$PROJECT_DIR$/.idea/modules/stream_data_generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stream_data_generator/.idea/modules/stream_data_generator-build.iml" filepath="$PROJECT_DIR$/stream_data_generator/.idea/modules/stream_data_generator-build.iml" />
     </modules>
   </component>
 </project>

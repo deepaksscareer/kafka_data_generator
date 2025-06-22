@@ -1,0 +1,5 @@
+[debug] Created transactional ClassFileManager with tempDir = C:\Programming\python_project\public_repo\kafka_data_generator\stream_data_generator\project\target\scala-2.12\sbt-1.0\classes.bak
+[debug] About to delete class files:
+[debug] We backup class files:
+[debug] Created transactional ClassFileManager with tempDir = C:\Programming\python_project\public_repo\kafka_data_generator\stream_data_generator\project\target\scala-2.12\sbt-1.0\classes.bak
+[debug] Removing the temporary directory used for backing up class files: C:\Programming\python_project\public_repo\kafka_data_generator\stream_data_generator\project\target\scala-2.12\sbt-1.0\classes.bak
