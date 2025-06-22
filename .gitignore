@@ -1,5 +1,10 @@
 .idea/
 
+# Remove class files
+*.class
+target/
+out/
+
 # === SBT & Scala ===
 target/
 /target/
@@ -18,12 +23,7 @@ target/
 stream_data_generator/target/
 stream_data_generator/project/
 
-# Remove class files
-*.class
-
 sbt*
-.idea/
-
 # === IntelliJ IDEA ===
 .idea/
 *.iml
