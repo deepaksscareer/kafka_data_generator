@@ -1,1 +1,42 @@
 .idea/
+
+# === SBT & Scala ===
+target/
+/target/
+/project/target/
+/project/project/
+/lib_managed/
+/src_managed/
+/boot/
+/.ivy2/
+/.cache/
+/.idea_modules/
+/dist/
+/bin/
+/out/
+
+stream_data_generator\target\
+sbt*
+.idea/
+
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+*.iws
+
+# === VS Code (if used) ===
+.vscode/
+
+# === Mac ===
+.DS_Store
+
+# === Logs ===
+*.log
+
+# === Scala Worksheet output ===
+*.worksheet.sc
+
+# === JetBrains Run/Debug Configs ===
+.idea/**/runConfigurations/
+
+# === Met
